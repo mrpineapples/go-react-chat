@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import Message from "./Message";
 
 const History = styled.div`
+    max-height: 300px;
     background-color: #f7f7f7;
     margin: 0;
     padding: 20px;
+    overflow-y: scroll;
   
     h2 {
         margin: 0;
@@ -13,12 +16,15 @@ const History = styled.div`
 `
 
 const ChatHistory = props => {
-    const messages = props.chatHistory.map((msg, index) => (
-        <p key={index}>{msg.data}</p>
-    ));
+    useEffect(() => {
+        let chatDiv = document.getElementById("chat");
+        chatDiv.scrollTop = chatDiv.scrollHeight;
+    })
+
+    const messages = props.chatHistory.map((msg, i) => <Message key={i} message={msg.data} />);
 
     return (
-        <History>
+        <History id="chat">
             <h2>Chat History</h2>
             {messages}
         </History>
