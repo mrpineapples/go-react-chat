@@ -5,6 +5,7 @@ A chat app built with Go and React!
 **Work In Progress**
 
 ## Docker
+In the `backend` directory run:
 
 ```bash
 docker build -t backend .               # builds image
